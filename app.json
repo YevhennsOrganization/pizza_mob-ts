@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "pizza_mob-ts",
-    "slug": "pizza_mob-ts",
+    "slug": "pizza",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.yevhenns.pizza"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dee85333-ed75-40ac-b1e8-cf491449b58d"
+      }
+    },
+    "owner": "yevhenns"
   }
 }
