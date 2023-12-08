@@ -39,6 +39,7 @@ const buttonCSS = StyleSheet.create({
     gap: 10,
     //   color: var(--white-color);
     borderRadius: 12,
+    backgroundColor: "#de612b",
     //   background: linear-gradient(95deg, #f94c25 4.78%, #ffd465 112.49%);
     border: "none",
     //   transition: var(--transition);

@@ -76,13 +76,13 @@ const ProductListItem = ({
     <View style={css1.listItem}>
       {promotion && (
         <View style={css1.promotion}>
-          <Text>Акція</Text>
+          <Text style={{ color: "#fff" }}>Акція</Text>
         </View>
       )}
       <View style={css1.favorite}>
         <RoundButton aria-label="add to favorite" onPress={addToFavorite}>
           {isFavorite ? (
-            <AntDesign name="heart" size={24} color="black" />
+            <AntDesign name="heart" size={24} color="#de612b" />
           ) : (
             <AntDesign name="hearto" size={24} color="black" />
           )}
@@ -126,6 +126,7 @@ const css1 = StyleSheet.create({
     position: "absolute",
     top: 24,
     left: 24,
+    backgroundColor: "#de612b",
     // background-color: var(--accent-color);
     paddingVertical: 6,
     paddingHorizontal: 12,

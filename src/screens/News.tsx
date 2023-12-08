@@ -11,7 +11,6 @@ const News = () => {
 
   return (
     <PagesWrapper>
-      <Text>Новинки</Text>
       {/* {isLoading && <LoaderModal />} */}
       {/* <CarouselComponent /> */}
       {/* <h2 className={css.heading}>Найпопулярніші позиції</h2> */}

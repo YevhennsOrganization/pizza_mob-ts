@@ -59,6 +59,7 @@ const css = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    flexDirection: "row",
   },
   price: {
     // font-family: var(--main-font);
@@ -72,6 +73,7 @@ const css = StyleSheet.create({
   promPrice: {
     // font-family: var(--main-font);
     fontSize: 18,
+    color: "#de612b",
     // color: var(--accent-color);
     fontWeight: "700",
   },
@@ -80,7 +82,7 @@ const css = StyleSheet.create({
     fontSize: 16,
     // color: var(--black-color);
     fontWeight: "700",
-    // textDecoration: "line - through",
+    textDecorationLine: "line-through",
   },
 });
 

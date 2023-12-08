@@ -28,11 +28,11 @@ const ProductQuantity = ({ getTotalQuantity }: ProductQuantityProps) => {
         disabled={quantity === 1}
         aria-label="minus"
       >
-        <Entypo name="chevron-thin-left" size={24} color="black" />
+        <Entypo name="chevron-thin-left" size={24} color="#de612b" />
       </RoundButton>
       <Text style={productQuantityCSS.quantityText}>{quantity} шт.</Text>
       <RoundButton onPress={increment} aria-label="plus">
-        <Entypo name="chevron-thin-right" size={24} color="black" />
+        <Entypo name="chevron-thin-right" size={24} color="#de612b" />
       </RoundButton>
     </View>
   );

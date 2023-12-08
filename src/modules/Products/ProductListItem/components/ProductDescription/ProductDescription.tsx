@@ -16,7 +16,12 @@ const ProductDescription = ({
 }: ProductDescriptionProps) => {
   return (
     <View style={ProductDescriptionCSS.descriprionWrapper}>
-      <Image source={{ uri: photo }} width={200} height={200} />
+      <Image
+        style={ProductDescriptionCSS.img}
+        source={{ uri: photo }}
+        width={200}
+        height={200}
+      />
       <View style={ProductDescriptionCSS.info}>
         <Text>{title}</Text>
         <Text>{description}</Text>
@@ -31,10 +36,6 @@ const ProductDescriptionCSS = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 10,
-    // img {
-    //     margin-left: auto;
-    //     margin-right: auto;
-    // }
   },
   info: {
     display: "flex",
@@ -48,6 +49,9 @@ const ProductDescriptionCSS = StyleSheet.create({
     //     font-family: var(--secondary-font);
     //     color: var(--secondary-text-color);
     // }
+  },
+  img: {
+    marginHorizontal: "auto",
   },
 });
 

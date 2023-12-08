@@ -27,7 +27,6 @@ const BottomNavigation = () => {
     >
       <Tab.Screen
         options={{
-          headerShown: false,
           tabBarIcon: () => <Entypo name="news" size={24} color="black" />,
         }}
         name="Новинки"
@@ -36,7 +35,6 @@ const BottomNavigation = () => {
 
       <Tab.Screen
         options={{
-          headerShown: false,
           tabBarIcon: () => (
             <FontAwesome name="user-o" size={24} color="black" />
           ),
@@ -47,7 +45,6 @@ const BottomNavigation = () => {
 
       <Tab.Screen
         options={{
-          // headerShown: false,
           tabBarIcon: () => (
             <Ionicons name="pizza-outline" size={24} color="black" />
           ),
@@ -58,7 +55,6 @@ const BottomNavigation = () => {
 
       <Tab.Screen
         options={{
-          headerShown: false,
           tabBarIcon: () => <AntDesign name="hearto" size={24} color="black" />,
         }}
         name="Улюблене"
@@ -67,7 +63,6 @@ const BottomNavigation = () => {
 
       <Tab.Screen
         options={{
-          headerShown: false,
           tabBarIcon: () => (
             <MaterialCommunityIcons
               name="basket-outline"
