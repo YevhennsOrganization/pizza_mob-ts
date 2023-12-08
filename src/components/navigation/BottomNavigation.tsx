@@ -7,7 +7,6 @@ import {
   FontAwesome,
   AntDesign,
 } from "@expo/vector-icons";
-import Home from "../../screens/Home";
 import Cart from "../../screens/Cart";
 import UnderDevelopment from "../../screens/UnderDevelopment";
 import Favorite from "../../screens/Favorite";
@@ -19,10 +18,12 @@ const Tab = createBottomTabNavigator();
 const BottomNavigation = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
-        // tabBarShowLabel: false,
-        style: { color: "red" },
-      }}
+      screenOptions={
+        {
+          // tabBarShowLabel: false,
+          // style: { color: "red" },
+        }
+      }
     >
       <Tab.Screen
         options={{

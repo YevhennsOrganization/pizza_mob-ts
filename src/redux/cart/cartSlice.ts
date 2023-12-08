@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sendOrder } from "./cartOperations";
+import { RootState } from "../store";
 
 const initialState = {
-  filledCart: [],
-  customerInfo: {},
+  filledCart: [] as TCart,
+  customerInfo: {} as TInfo,
   orderSum: 0,
-  error: null,
+  error: null as any,
   isLoading: false,
 };
 
@@ -13,22 +14,22 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem(state, action) {
+    addItem(state, action: { payload: TCartItem }) {
       state.filledCart = [...state.filledCart, action.payload];
     },
-    deleteItem(state, action) {
+    deleteItem(state, action: { payload: string }) {
       state.filledCart = state.filledCart.filter(
         (item) => item._id !== action.payload
       );
     },
-    addInfo(state, action) {
+    addInfo(state, action: { payload: TInfo }) {
       state.customerInfo = action.payload;
     },
     deleteAllItems(state) {
       state.filledCart = [];
-      state.customerInfo = {};
+      state.customerInfo = {} as TInfo;
     },
-    addOrderSum(state, action) {
+    addOrderSum(state, action: { payload: number }) {
       state.orderSum = action.payload;
     },
   },
@@ -57,11 +58,11 @@ const cartSlice = createSlice({
 
 export const cartReducer = cartSlice.reducer;
 
-export const getFilledCart = (state) => state.cart.filledCart;
-export const getCustomerInfo = (state) => state.cart.customerInfo;
-export const getOrderSum = (state) => state.cart.orderSum;
-export const getIsLoading = (state) => state.cart.isLoading;
-export const getError = (state) => state.cart.error;
+export const getFilledCart = (state: RootState) => state.cart.filledCart;
+export const getCustomerInfo = (state: RootState) => state.cart.customerInfo;
+export const getOrderSum = (state: RootState) => state.cart.orderSum;
+export const getIsLoading = (state: RootState) => state.cart.isLoading;
+export const getError = (state: RootState) => state.cart.error;
 
 export const { addItem } = cartSlice.actions;
 export const { deleteItem } = cartSlice.actions;

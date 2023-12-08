@@ -1,3 +1,4 @@
+import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Appetizers from "../../screens/Appetizers";
 import Drinks from "../../screens/Drinks";

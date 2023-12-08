@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 // import Container from "@/UI/common/Container/Container";
 // import Section from "@/UI/common/Section/Section";
 // import Error500 from "@/components/errors/Error500/Error500";
@@ -6,7 +6,9 @@ import React from "react";
 // import "react-toastify/dist/ReactToastify.css";
 import { View } from "react-native";
 
-export const PagesWrapper = ({ children }) => {
+type PagesWrapperProps = PropsWithChildren;
+
+export const PagesWrapper = ({ children }: PagesWrapperProps) => {
   //   const is500Error = useFetchProducts();
 
   return (

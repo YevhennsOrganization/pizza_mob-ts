@@ -6,19 +6,23 @@ import { getFavorites } from "../../redux/products/productsSlice";
 // import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProductsList = ({ data }) => {
+type ProductsListProps = {
+  data: TProductsArr;
+};
+
+const ProductsList = ({ data }: ProductsListProps) => {
   const dispatch = useDispatch();
   const favoriteProducts = useSelector(getFavorites);
   const filledCart = useSelector(getFilledCart);
 
-  const isInCart = () => filledCart.some((item) => item._id === _id);
+  const isInCart = (_id: string) => filledCart.some((item) => item._id === _id);
 
   const addToCart = (
-    _id,
-    totalQuantity,
-    promotion,
-    totalPrice,
-    TotalPromPrice
+    _id: string,
+    totalQuantity: number,
+    promotion: boolean,
+    totalPrice: number,
+    TotalPromPrice: number
   ) => {
     const chosenProduct = data.find((item) => item._id === _id);
     if (chosenProduct) {
@@ -50,7 +54,7 @@ const ProductsList = ({ data }) => {
     }
   };
 
-  const setFavoriteProducts = (_id) => {
+  const setFavoriteProducts = (_id: string) => {
     if (favoriteProducts.some((item) => item._id === _id)) {
       return true;
     } else {

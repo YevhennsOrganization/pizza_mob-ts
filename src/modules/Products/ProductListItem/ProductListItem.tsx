@@ -13,13 +13,21 @@ import RoundButton from "../../../UI/RoundButton/RoundButton";
 import { useDispatch } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
 
+type ProductListItemProps = {
+  item: TProduct;
+  addToCart: TAddToCart;
+  setFavoriteProducts: (_id: string) => boolean;
+  favoriteProducts: TProductsArr;
+  isInCart: (_id: string) => boolean;
+};
+
 const ProductListItem = ({
   item,
   addToCart,
   setFavoriteProducts,
   favoriteProducts,
   isInCart,
-}) => {
+}: ProductListItemProps) => {
   const {
     _id,
     title,
@@ -38,7 +46,7 @@ const ProductListItem = ({
 
   const dispatch = useDispatch();
 
-  const getTotalQuantity = (quantity) => {
+  const getTotalQuantity = (quantity: number) => {
     setTotalQuantity(quantity);
     setTotalPrice(price * quantity);
     setTotalPromPrice(promPrice * quantity);
@@ -48,27 +56,27 @@ const ProductListItem = ({
     if (favoriteProducts.some((item) => item._id === _id)) {
       setIsFavorite(false);
       dispatch(removeFromFavoriteAction(_id));
-      toast.warn("Видалено з улюблених", {
-        position: "top-center",
-        autoClose: 1500,
-        hideProgressBar: true,
-      });
+      // toast.warn("Видалено з улюблених", {
+      //   position: "top-center",
+      //   autoClose: 1500,
+      //   hideProgressBar: true,
+      // });
     } else {
       setIsFavorite(true);
       dispatch(addToFavoriteAction(item));
-      toast.success("Додано в улюблені", {
-        position: "top-center",
-        autoClose: 1500,
-        hideProgressBar: true,
-      });
+      // toast.success("Додано в улюблені", {
+      //   position: "top-center",
+      //   autoClose: 1500,
+      //   hideProgressBar: true,
+      // });
     }
   };
 
   return (
     <View style={css1.listItem}>
-      {promotion && <div style={css1.promotion}>Акція</div>}
+      {promotion && <View style={css1.promotion}>Акція</View>}
       <View style={css1.favorite}>
-        <RoundButton aria-label="add to favorite" onClick={addToFavorite}>
+        <RoundButton aria-label="add to favorite" onPress={addToFavorite}>
           {isFavorite ? (
             <AntDesign name="heart" size={24} color="black" />
           ) : (
@@ -100,18 +108,18 @@ const css1 = StyleSheet.create({
   listItem: {
     // box-shadow: 4px 4px 14px 0px rgba(59, 50, 50, 0.25);
     backgroundColor: "#fff",
-    color: black,
+    color: "black",
     padding: 24,
     borderRadius: 10,
-    position: relative,
-    display: flex,
-    flexDirection: column,
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
     width: "100%",
     maxWidth: 350,
     gap: 10,
   },
   promotion: {
-    position: absolute,
+    position: "absolute",
     top: 24,
     left: 24,
     // background-color: var(--accent-color);
@@ -122,7 +130,7 @@ const css1 = StyleSheet.create({
     // font-family: var(--main-font);
   },
   favorite: {
-    position: absolute,
+    position: "absolute",
     right: 24,
     top: 24,
   },
