@@ -4,16 +4,16 @@ import ProductListItem from "./ProductListItem/ProductListItem";
 import { addItem, getFilledCart } from "../../redux/cart/cartSlice";
 import { getFavorites } from "../../redux/products/productsSlice";
 // import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 type ProductsListProps = {
   data: TProductsArr;
 };
 
 const ProductsList = ({ data }: ProductsListProps) => {
-  const dispatch = useDispatch();
-  const favoriteProducts = useSelector(getFavorites);
-  const filledCart = useSelector(getFilledCart);
+  const dispatch = useAppDispatch();
+  const favoriteProducts = useAppSelector(getFavorites);
+  const filledCart = useAppSelector(getFilledCart);
 
   const isInCart = (_id: string) => filledCart.some((item) => item._id === _id);
 

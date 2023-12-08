@@ -16,7 +16,7 @@ const ProductDescription = ({
 }: ProductDescriptionProps) => {
   return (
     <View style={ProductDescriptionCSS.descriprionWrapper}>
-      <Image source={require(photo)} width={200} height={200} />
+      <Image source={photo} width={200} height={200} />
       <View style={ProductDescriptionCSS.info}>
         <Text>{title}</Text>
         <Text>{description}</Text>

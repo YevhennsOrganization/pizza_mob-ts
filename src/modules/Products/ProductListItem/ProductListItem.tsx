@@ -10,8 +10,8 @@ import ProductFooter from "./components/ProductFooter/ProductFooter";
 // import css from "./ProductListItem.module.scss";
 import ProductDescription from "./components/ProductDescription/ProductDescription";
 import RoundButton from "../../../UI/RoundButton/RoundButton";
-import { useDispatch } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
+import { useAppDispatch } from "../../../redux/hooks";
 
 type ProductListItemProps = {
   item: TProduct;
@@ -44,7 +44,7 @@ const ProductListItem = ({
   const [totalQuantity, setTotalQuantity] = useState(1);
   const [isFavorite, setIsFavorite] = useState(setFavoriteProducts(_id));
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const getTotalQuantity = (quantity: number) => {
     setTotalQuantity(quantity);

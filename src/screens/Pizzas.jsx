@@ -11,6 +11,8 @@ const Pizzas = () => {
   const isLoading = useSelector(getIsLoading);
   const pizzas = filterByCategory(products, "pizzas");
 
+  console.log(process.env.BASE_URL);
+
   return (
     // <View style={styles.wrapper}>
     //   <Text>Pizzas</Text>
