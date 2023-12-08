@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { useSelector } from "react-redux";
 import ProductsList from "../modules/Products/ProductsList";
 import PagesWrapper from "../components/PagesWrapper/PagesWrapper";
 import { getIsLoading, getProductsAll } from "../redux/products/productsSlice";
