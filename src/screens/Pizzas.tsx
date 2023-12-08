@@ -18,7 +18,7 @@ const Pizzas = () => {
     //   <Text>Pizzas</Text>
     // </View>
 
-    <PagesWrapper title="Nostra pizza - Піца">
+    <PagesWrapper>
       {/* {isLoading && <LoaderModal />} */}
       <ProductsList data={pizzas} />
       {/* <ToastContainer /> */}
