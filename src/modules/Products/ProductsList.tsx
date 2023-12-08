@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import ProductListItem from "./ProductListItem/ProductListItem";
 import { addItem, getFilledCart } from "../../redux/cart/cartSlice";
 import { getFavorites } from "../../redux/products/productsSlice";
@@ -63,7 +63,7 @@ const ProductsList = ({ data }: ProductsListProps) => {
   };
 
   return (
-    <View style={css.list}>
+    <ScrollView style={css.list}>
       {data.map((item) => {
         return (
           <ProductListItem
@@ -76,16 +76,17 @@ const ProductsList = ({ data }: ProductsListProps) => {
           />
         );
       })}
-    </View>
+    </ScrollView>
   );
 };
 
 const css = StyleSheet.create({
   list: {
-    alignItems: "center",
+    // alignItems: "center",
+    display: "flex",
     flexDirection: "column",
     gap: 20,
-    padding: 20,
+    paddingHorizontal: 20,
   },
 });
 
