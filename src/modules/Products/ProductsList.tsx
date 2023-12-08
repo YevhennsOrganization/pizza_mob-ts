@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import ProductListItem from "./ProductListItem/ProductListItem";
 import { addItem, getFilledCart } from "../../redux/cart/cartSlice";
 import { getFavorites } from "../../redux/products/productsSlice";
-// import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import Toast from "react-native-toast-message";
 
 type ProductsListProps = {
   data: TProductsArr;
@@ -46,11 +46,10 @@ const ProductsList = ({ data }: ProductsListProps) => {
       } else {
         dispatch(addItem(cartItem));
       }
-      // toast.success("Додано у кошик", {
-      //   position: "top-center",
-      //   autoClose: 1500,
-      //   hideProgressBar: true,
-      // });
+      Toast.show({
+        type: "success",
+        text1: "Додано у кошик",
+      });
     }
   };
 
@@ -63,7 +62,13 @@ const ProductsList = ({ data }: ProductsListProps) => {
   };
 
   return (
-    <ScrollView style={css.list}>
+    <ScrollView
+      contentContainerStyle={{
+        rowGap: 20,
+        alignItems: "center",
+        padding: 10,
+      }}
+    >
       {data.map((item) => {
         return (
           <ProductListItem
@@ -79,15 +84,5 @@ const ProductsList = ({ data }: ProductsListProps) => {
     </ScrollView>
   );
 };
-
-const css = StyleSheet.create({
-  list: {
-    // alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    gap: 20,
-    paddingHorizontal: 20,
-  },
-});
 
 export default ProductsList;

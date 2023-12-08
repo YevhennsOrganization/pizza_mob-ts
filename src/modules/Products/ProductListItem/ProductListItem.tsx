@@ -5,13 +5,12 @@ import {
   addToFavoriteAction,
   removeFromFavoriteAction,
 } from "../../../redux/products/productsSlice";
-// import { toast } from "react-toastify";
 import ProductFooter from "./components/ProductFooter/ProductFooter";
-// import css from "./ProductListItem.module.scss";
 import ProductDescription from "./components/ProductDescription/ProductDescription";
 import RoundButton from "../../../UI/RoundButton/RoundButton";
 import { AntDesign } from "@expo/vector-icons";
 import { useAppDispatch } from "../../../redux/hooks";
+import Toast from "react-native-toast-message";
 
 type ProductListItemProps = {
   item: TProduct;
@@ -56,19 +55,17 @@ const ProductListItem = ({
     if (favoriteProducts.some((item) => item._id === _id)) {
       setIsFavorite(false);
       dispatch(removeFromFavoriteAction(_id));
-      // toast.warn("Видалено з улюблених", {
-      //   position: "top-center",
-      //   autoClose: 1500,
-      //   hideProgressBar: true,
-      // });
+      Toast.show({
+        type: "info",
+        text1: "Видалено з улюблених",
+      });
     } else {
       setIsFavorite(true);
       dispatch(addToFavoriteAction(item));
-      // toast.success("Додано в улюблені", {
-      //   position: "top-center",
-      //   autoClose: 1500,
-      //   hideProgressBar: true,
-      // });
+      Toast.show({
+        type: "success",
+        text1: "Додано в улюблені",
+      });
     }
   };
 
@@ -82,9 +79,9 @@ const ProductListItem = ({
       <View style={css1.favorite}>
         <RoundButton aria-label="add to favorite" onPress={addToFavorite}>
           {isFavorite ? (
-            <AntDesign name="heart" size={24} color="#de612b" />
+            <AntDesign name="heart" size={40} color="#de612b" />
           ) : (
-            <AntDesign name="hearto" size={24} color="black" />
+            <AntDesign name="hearto" size={40} color="black" />
           )}
         </RoundButton>
       </View>
@@ -110,7 +107,6 @@ const ProductListItem = ({
 
 const css1 = StyleSheet.create({
   listItem: {
-    // box-shadow: 4px 4px 14px 0px rgba(59, 50, 50, 0.25);
     backgroundColor: "#fff",
     color: "black",
     padding: 24,

@@ -1,31 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { useAppSelector } from "../redux/hooks";
-import { getPromotions } from "../redux/products/productsSlice";
+import { getIsLoading, getPromotions } from "../redux/products/productsSlice";
 import PagesWrapper from "../components/PagesWrapper/PagesWrapper";
 import ProductsList from "../modules/Products/ProductsList";
+import Toast from "react-native-toast-message";
 
 const News = () => {
   const promotionProducts = useAppSelector(getPromotions);
-  // const isLoading = useAppSelector(getIsLoading);
+  const isLoading = useAppSelector(getIsLoading);
 
   return (
     <PagesWrapper>
       {/* {isLoading && <LoaderModal />} */}
       {/* <CarouselComponent /> */}
-      {/* <h2 className={css.heading}>Найпопулярніші позиції</h2> */}
       <ProductsList data={promotionProducts} />
-      {/* <ToastContainer /> */}
+      <Toast />
     </PagesWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default News;

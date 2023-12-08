@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import {
   deleteAllItems,
   deleteItem,
+  getError,
   getFilledCart,
+  getIsLoading,
   getOrderSum,
 } from "../redux/cart/cartSlice";
 import PagesWrapper from "../components/PagesWrapper/PagesWrapper";
 import CartContent from "../modules/Cart/CartContent";
+import FinalModal from "../components/FinalModal/FinalModal";
 
 const Cart = () => {
   const [open, setOpen] = useState(false);
@@ -16,8 +19,8 @@ const Cart = () => {
   const dispatch = useAppDispatch();
   const filledCart = useAppSelector(getFilledCart);
   const sum = useAppSelector(getOrderSum);
-  // const isLoading = useAppSelector(getIsLoading);
-  // const err = useAppSelector(getError);
+  const isLoading = useAppSelector(getIsLoading);
+  const err = useAppSelector(getError);
 
   const deleteCartItem = (id: string) => {
     dispatch(deleteItem(id));
@@ -34,7 +37,7 @@ const Cart = () => {
 
   return (
     <PagesWrapper>
-      <div className={css.cartWrapper}>
+      <View style={cartCSS.cartWrapper}>
         <CartContent
           filledCart={filledCart}
           deleteCartItem={deleteCartItem}
@@ -50,16 +53,15 @@ const Cart = () => {
             err={err}
           />
         )}
-      </div>
+      </View>
     </PagesWrapper>
   );
 };
 
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+const cartCSS = StyleSheet.create({
+  cartWrapper: {
+    maxWidth: 400,
+    marginHorizontal: "auto",
   },
 });
 

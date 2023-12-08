@@ -21,9 +21,9 @@ const Empty: FC<Props> = ({ text }) => {
 
 const emptyCSS = StyleSheet.create({
   emptyCart: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    // display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "center",
     alignItems: "center",
     gap: 10,
   },

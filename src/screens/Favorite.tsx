@@ -1,13 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import PagesWrapper from "../components/PagesWrapper/PagesWrapper";
 import { useAppSelector } from "../redux/hooks";
-import { getFavorites } from "../redux/products/productsSlice";
+import { getFavorites, getIsLoading } from "../redux/products/productsSlice";
 import ProductsList from "../modules/Products/ProductsList";
 import Empty from "../components/Empty/Empty";
+import Toast from "react-native-toast-message";
 
 const Favorite = () => {
-  // const isLoading = useAppSelector(getIsLoading);
+  const isLoading = useAppSelector(getIsLoading);
   const favoriteProducts = useAppSelector(getFavorites);
 
   return (
@@ -18,17 +18,9 @@ const Favorite = () => {
       ) : (
         <Empty text={"Тут нічого немає!"} />
       )}
-      {/* <ToastContainer /> */}
+      <Toast />
     </PagesWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default Favorite;

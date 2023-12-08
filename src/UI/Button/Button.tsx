@@ -32,16 +32,17 @@ const buttonCSS = StyleSheet.create({
   button: {
     paddingVertical: 12,
     paddingHorizontal: 24,
-    display: "flex",
+    // display: "flex",
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
+    // alignItems: "center",
+    // justifyContent: "center",
+    // gap: 10,
+    color: "red",
     //   color: var(--white-color);
     borderRadius: 12,
     backgroundColor: "#de612b",
     //   background: linear-gradient(95deg, #f94c25 4.78%, #ffd465 112.49%);
-    border: "none",
+    // border: "none",
     //   transition: var(--transition);
     fontSize: 18,
     //   font-family: var(--main-font),

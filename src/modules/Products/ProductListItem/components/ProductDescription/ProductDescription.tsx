@@ -51,7 +51,8 @@ const ProductDescriptionCSS = StyleSheet.create({
     // }
   },
   img: {
-    marginHorizontal: "auto",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 });
 

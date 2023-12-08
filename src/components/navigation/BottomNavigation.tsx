@@ -12,69 +12,77 @@ import UnderDevelopment from "../../screens/UnderDevelopment";
 import Favorite from "../../screens/Favorite";
 import News from "../../screens/News";
 import TopNavigation from "./TopNavigation";
+import Toast from "react-native-toast-message";
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
   return (
-    <Tab.Navigator
-      screenOptions={
-        {
-          // tabBarShowLabel: false,
-          // style: { color: "red" },
-        }
-      }
-    >
-      <Tab.Screen
-        options={{
-          tabBarIcon: () => <Entypo name="news" size={24} color="black" />,
+    <>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarStyle: { backgroundColor: "#de612b" },
+          tabBarActiveTintColor: "white",
+          tabBarInactiveTintColor: "black",
         }}
-        name="Новинки"
-        component={News}
-      />
+      >
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Entypo name="news" size={32} color={color} />
+            ),
+          }}
+          name="Новинки"
+          component={News}
+        />
 
-      <Tab.Screen
-        options={{
-          tabBarIcon: () => (
-            <FontAwesome name="user-o" size={24} color="black" />
-          ),
-        }}
-        name="Увійти"
-        component={UnderDevelopment}
-      />
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({ color }) => (
+              <FontAwesome name="user-o" size={32} color={color} />
+            ),
+          }}
+          name="Увійти"
+          component={UnderDevelopment}
+        />
 
-      <Tab.Screen
-        options={{
-          tabBarIcon: () => (
-            <Ionicons name="pizza-outline" size={24} color="black" />
-          ),
-        }}
-        name="Категорії"
-        component={TopNavigation}
-      />
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="pizza-outline" size={32} color={color} />
+            ),
+          }}
+          name="Категорії"
+          component={TopNavigation}
+        />
 
-      <Tab.Screen
-        options={{
-          tabBarIcon: () => <AntDesign name="hearto" size={24} color="black" />,
-        }}
-        name="Улюблене"
-        component={Favorite}
-      />
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({ color }) => (
+              <AntDesign name="hearto" size={32} color={color} />
+            ),
+          }}
+          name="Улюблене"
+          component={Favorite}
+        />
 
-      <Tab.Screen
-        options={{
-          tabBarIcon: () => (
-            <MaterialCommunityIcons
-              name="basket-outline"
-              size={24}
-              color="black"
-            />
-          ),
-        }}
-        name="Кошик"
-        component={Cart}
-      />
-    </Tab.Navigator>
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons
+                name="basket-outline"
+                size={32}
+                color={color}
+              />
+            ),
+          }}
+          name="Кошик"
+          component={Cart}
+        />
+      </Tab.Navigator>
+      <Toast />
+    </>
   );
 };
 

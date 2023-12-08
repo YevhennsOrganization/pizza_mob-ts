@@ -94,7 +94,9 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
         label="Коментар"
         htmlFor="comment"
       />
-      <Button>Підтвердити</Button>
+      <Button>
+        <Text>Підтвердити</Text>
+      </Button>
     </form>
   );
 };
