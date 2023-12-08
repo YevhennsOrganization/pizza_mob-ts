@@ -33,6 +33,7 @@ const buttonCSS = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 24,
     display: "flex",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     gap: 10,

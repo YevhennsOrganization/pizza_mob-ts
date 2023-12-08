@@ -36,16 +36,18 @@ const ProductFooter = ({
         }
       >
         {isInCartBoolean ? (
-          <>
+          <View>
             <MaterialCommunityIcons
               name="basket-outline"
               size={24}
               color="black"
             />
-            В кошику
-          </>
+            <Text>В кошику</Text>
+          </View>
         ) : (
-          <>В кошик</>
+          <View>
+            <Text>В кошик</Text>
+          </View>
         )}
       </Button>
     </View>
@@ -78,7 +80,7 @@ const css = StyleSheet.create({
     fontSize: 16,
     // color: var(--black-color);
     fontWeight: "700",
-    textDecoration: "line - through",
+    // textDecoration: "line - through",
   },
 });
 

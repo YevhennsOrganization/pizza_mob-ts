@@ -82,10 +82,10 @@ const ProductsList = ({ data }: ProductsListProps) => {
 
 const css = StyleSheet.create({
   list: {
-    flex: 1,
     alignItems: "center",
-    justifyContent: "center",
     flexDirection: "column",
+    gap: 20,
+    padding: 20,
   },
 });
 

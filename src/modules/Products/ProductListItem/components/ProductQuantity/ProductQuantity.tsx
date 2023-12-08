@@ -41,8 +41,9 @@ const ProductQuantity = ({ getTotalQuantity }: ProductQuantityProps) => {
 const productQuantityCSS = StyleSheet.create({
   wrapper: {
     display: "flex",
+    flexDirection: "row",
     alignItems: "center",
-    marginTop: "auto",
+    // marginTop: "auto",
     gap: 5,
   },
   quantityText: {

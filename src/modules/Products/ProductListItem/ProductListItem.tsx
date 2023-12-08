@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import ProductQuantity from "./components/ProductQuantity/ProductQuantity";
 import {
   addToFavoriteAction,
@@ -74,7 +74,11 @@ const ProductListItem = ({
 
   return (
     <View style={css1.listItem}>
-      {promotion && <View style={css1.promotion}>Акція</View>}
+      {promotion && (
+        <View style={css1.promotion}>
+          <Text>Акція</Text>
+        </View>
+      )}
       <View style={css1.favorite}>
         <RoundButton aria-label="add to favorite" onPress={addToFavorite}>
           {isFavorite ? (
