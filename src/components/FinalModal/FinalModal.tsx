@@ -27,8 +27,9 @@ const FinalModal: FC<Props> = ({
   return (
     <div style={FinalModalCSS.modalWrapper}>
       {isLoading ? (
-        <LoaderModal />
+        <Text>asdasd</Text>
       ) : (
+        // <LoaderModal />
         <div style={FinalModalCSS.modal}>
           <>
             <p style={FinalModalCSS.resultText}>
@@ -61,7 +62,7 @@ const FinalModal: FC<Props> = ({
 
 const FinalModalCSS = StyleSheet.create({
   modalWrapper: {
-    position: "fixed",
+    // position: "fixed",
     //   boxSizing: 'border-box',
     //   zIndex: 9,
     //   left: 0,
