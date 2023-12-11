@@ -13,12 +13,20 @@ const CartListItem: FC<Props> = ({ data, deleteCartItem }) => {
 
   return (
     <View style={CartListItemCSS.cartListItem}>
-      <Image source={{ uri: photo }} width={50} height={50} />
-      <Text>{title}</Text>
-      <Text>{quantity}</Text>
-      <Text>{totalPrice} грн</Text>
-      <RoundButton onPress={() => deleteCartItem(_id)}>
-        <FontAwesome name="remove" size={24} color="black" />
+      <Image
+        style={{ flexBasis: 50 }}
+        source={{ uri: photo }}
+        width={50}
+        height={50}
+      />
+      <Text style={{ flexGrow: 1 }}>{title}</Text>
+      <Text style={{ flexBasis: 20 }}>{quantity}</Text>
+      <Text style={{ flexBasis: 65 }}>{totalPrice} грн</Text>
+      <RoundButton
+        style={{ flexBasis: 32 }}
+        onPress={() => deleteCartItem(_id)}
+      >
+        <FontAwesome name="remove" size={24} color="#de612b" />
       </RoundButton>
     </View>
   );
@@ -26,8 +34,7 @@ const CartListItem: FC<Props> = ({ data, deleteCartItem }) => {
 
 const CartListItemCSS = StyleSheet.create({
   cartListItem: {
-    // display: "grid",
-    // gr: 50px 1fr 20px 65px 32px;
+    flexDirection: "row",
     gap: 5,
     marginLeft: "auto",
     marginRight: "auto",

@@ -114,8 +114,6 @@ const css1 = StyleSheet.create({
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    width: "100%",
-    maxWidth: 350,
     gap: 10,
   },
   promotion: {

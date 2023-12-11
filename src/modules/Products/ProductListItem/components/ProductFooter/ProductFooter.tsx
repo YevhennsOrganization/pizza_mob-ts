@@ -36,7 +36,13 @@ const ProductFooter = ({
         }
       >
         {isInCartBoolean ? (
-          <View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 10,
+              alignItems: "center",
+            }}
+          >
             <MaterialCommunityIcons
               name="basket-outline"
               size={24}

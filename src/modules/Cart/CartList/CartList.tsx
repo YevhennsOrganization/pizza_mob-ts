@@ -43,13 +43,6 @@ const CartList = ({ filledCart, deleteCartItem, deleteAllProducts }: Props) => {
 const CartListCSS = StyleSheet.create({
   cartList: {
     marginBottom: 20,
-    // div {
-    //     margin-bottom: 12px;
-    // }
-    // button {
-    //     margin-left: auto;
-    //     margin-right: auto;
-    // }
   },
   totalPayment: {
     // font-family: var(--secondary-font);

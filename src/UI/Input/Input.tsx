@@ -1,23 +1,38 @@
 import React, { FC, forwardRef, HTMLProps, PropsWithRef } from "react";
-import { StyleSheet, Text, View, Image, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
+  KeyboardTypeOptions,
+} from "react-native";
 
 interface Props extends HTMLProps<HTMLInputElement> {
   label?: string;
   error?: string;
+  keyboardType?: KeyboardTypeOptions;
 }
 
 const Input: FC<PropsWithRef<Props>> = forwardRef(
-  ({ label, error, ...props }, ref) => {
+  ({ label, error, keyboardType = "default", ...props }, ref) => {
     return (
       <View style={inputCSS.fieldset}>
-        <View>{label}</View>
+        {/* <View> */}
+        <Text>{label}</Text>
+        {/* </View> */}
         <TextInput
+          keyboardType={keyboardType}
           style={inputCSS.input}
           //   autoComplete="true"
           //   ref={ref}
           //   {...props}
         />
-        {error && <span style={inputCSS.errorMessage}>{error}</span>}
+        {error && (
+          <span style={inputCSS.errorMessage}>
+            <Text>{error}</Text>
+          </span>
+        )}
       </View>
     );
   }
@@ -28,7 +43,6 @@ Input.displayName = "Input";
 const inputCSS = StyleSheet.create({
   fieldset: {
     // font-family: var(--secondary-font);
-    border: "none",
     display: "flex",
     flexDirection: "column",
     gap: 5,
@@ -37,8 +51,9 @@ const inputCSS = StyleSheet.create({
     width: "100%",
     padding: 12,
     borderRadius: 5,
+    borderColor: "#de612b",
+    borderWidth: 1,
     // transition: var(--transition);
-    // border: 1px solid var(--accent-color);
     // outline: none;
     // font-family: var(--main-font);
     // &:hover {

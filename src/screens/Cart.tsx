@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import {
   deleteAllItems,
@@ -37,7 +37,7 @@ const Cart = () => {
 
   return (
     <PagesWrapper>
-      <View style={cartCSS.cartWrapper}>
+      <View>
         <CartContent
           filledCart={filledCart}
           deleteCartItem={deleteCartItem}
@@ -57,12 +57,5 @@ const Cart = () => {
     </PagesWrapper>
   );
 };
-
-const cartCSS = StyleSheet.create({
-  cartWrapper: {
-    maxWidth: 400,
-    marginHorizontal: "auto",
-  },
-});
 
 export default Cart;

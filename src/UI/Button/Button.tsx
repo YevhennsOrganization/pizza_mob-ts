@@ -32,12 +32,12 @@ const buttonCSS = StyleSheet.create({
   button: {
     paddingVertical: 12,
     paddingHorizontal: 24,
+    alignItems: "center",
     // display: "flex",
-    flexDirection: "row",
+    // flexDirection: "row",
     // alignItems: "center",
     // justifyContent: "center",
     // gap: 10,
-    color: "red",
     //   color: var(--white-color);
     borderRadius: 12,
     backgroundColor: "#de612b",

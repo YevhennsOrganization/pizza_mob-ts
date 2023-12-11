@@ -1,5 +1,5 @@
 import React, { FC, forwardRef, HTMLProps, PropsWithRef } from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 
 interface Props extends HTMLProps<HTMLTextAreaElement> {
   label?: string;
@@ -9,11 +9,17 @@ interface Props extends HTMLProps<HTMLTextAreaElement> {
 const TextArea: FC<PropsWithRef<Props>> = forwardRef(
   ({ label, error, ...props }, ref) => {
     return (
-      <fieldset style={TextAreaCSS.fieldset}>
-        <label htmlFor={props.htmlFor}>{label}</label>
-        <TextInput numberOfLines={5} />
-        {error && <span style={TextAreaCSS.errorMessage}>{error}</span>}
-      </fieldset>
+      <View style={TextAreaCSS.fieldset}>
+        {/* <label htmlFor={props.htmlFor}> */}
+        <Text>{label}</Text>
+        {/* </label> */}
+        <TextInput style={TextAreaCSS.textarea} numberOfLines={5} />
+        {error && (
+          <View>
+            <Text style={TextAreaCSS.errorMessage}>{error}</Text>
+          </View>
+        )}
+      </View>
     );
   }
 );
@@ -32,10 +38,12 @@ const TextAreaCSS = StyleSheet.create({
     width: "100%",
     padding: 12,
     borderRadius: 5,
-    resize: "none",
+    borderColor: "#de612b",
+    borderWidth: 1,
+    // resize: "none",
+    textAlignVertical: "top",
     // transition: var(--transition);
     // border: 1px solid var(--accent-color);
-    outline: "none",
     // font-family: var(--main-font);
     // &:hover {
     //     box-shadow: var(--box-shadow);

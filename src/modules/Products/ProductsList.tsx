@@ -65,7 +65,7 @@ const ProductsList = ({ data }: ProductsListProps) => {
     <ScrollView
       contentContainerStyle={{
         rowGap: 20,
-        alignItems: "center",
+        alignItems: "stretch",
         padding: 10,
       }}
     >

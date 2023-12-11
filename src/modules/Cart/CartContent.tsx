@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet, Text, TextInput, View, ScrollView } from "react-native";
 import Empty from "../../components/Empty/Empty";
 import CartForm from "./CartForm/CartForm";
 import CartList from "./CartList/CartList";
@@ -24,7 +25,7 @@ const CartContent = ({
   });
 
   return (
-    <>
+    <ScrollView style={{ padding: 10 }}>
       {filledCart.length > 0 ? (
         <>
           <CartList
@@ -37,7 +38,7 @@ const CartContent = ({
       ) : (
         <Empty text={"Кошик порожній!"} />
       )}
-    </>
+    </ScrollView>
   );
 };
 
