@@ -47,8 +47,12 @@ const FinalModal: FC<Props> = ({
                 );
               })}
             </View>
-            <View>Загальна сума: {sum} грн.</View>
-            <Button onPress={finalAction}>Вийти</Button>
+            <View>
+              <Text>Загальна сума: {sum} грн.</Text>
+            </View>
+            <Button onPress={finalAction}>
+              <Text>Вийти</Text>
+            </Button>
           </>
         </View>
       )}

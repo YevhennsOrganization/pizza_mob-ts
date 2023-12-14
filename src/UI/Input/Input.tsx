@@ -1,4 +1,5 @@
 import React, { FC, forwardRef, HTMLProps, PropsWithRef } from "react";
+import { Controller } from "react-hook-form";
 import {
   StyleSheet,
   Text,
@@ -6,25 +7,34 @@ import {
   Image,
   TextInput,
   KeyboardTypeOptions,
+  TextInputProps,
 } from "react-native";
 
-interface Props extends HTMLProps<HTMLInputElement> {
+interface Props extends TextInputProps {
   label?: string;
   error?: string;
   keyboardType?: KeyboardTypeOptions;
   numberOfLines?: number;
+  // name: string;
+  // control: any;
 }
 
 const Input: FC<PropsWithRef<Props>> = forwardRef(
   (
-    { label, error, keyboardType = "default", numberOfLines = 1, ...props },
+    {
+      label,
+      error,
+      keyboardType = "default",
+      numberOfLines = 1,
+      // name,
+      // control,
+      ...props
+    },
     ref
   ) => {
     return (
       <View style={inputCSS.fieldset}>
-        {/* <View> */}
         <Text>{label}</Text>
-        {/* </View> */}
         <TextInput
           numberOfLines={numberOfLines}
           keyboardType={keyboardType}
@@ -33,10 +43,11 @@ const Input: FC<PropsWithRef<Props>> = forwardRef(
           //   ref={ref}
           //   {...props}
         />
+
         {error && (
-          <span style={inputCSS.errorMessage}>
-            <Text>{error}</Text>
-          </span>
+          <View>
+            <Text style={inputCSS.errorMessage}>{error}</Text>
+          </View>
         )}
       </View>
     );
