@@ -12,16 +12,21 @@ interface Props extends HTMLProps<HTMLInputElement> {
   label?: string;
   error?: string;
   keyboardType?: KeyboardTypeOptions;
+  numberOfLines?: number;
 }
 
 const Input: FC<PropsWithRef<Props>> = forwardRef(
-  ({ label, error, keyboardType = "default", ...props }, ref) => {
+  (
+    { label, error, keyboardType = "default", numberOfLines = 1, ...props },
+    ref
+  ) => {
     return (
       <View style={inputCSS.fieldset}>
         {/* <View> */}
         <Text>{label}</Text>
         {/* </View> */}
         <TextInput
+          numberOfLines={numberOfLines}
           keyboardType={keyboardType}
           style={inputCSS.input}
           //   autoComplete="true"
@@ -53,6 +58,7 @@ const inputCSS = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#de612b",
     borderWidth: 1,
+    textAlignVertical: "top",
     // transition: var(--transition);
     // outline: none;
     // font-family: var(--main-font);

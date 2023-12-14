@@ -25,38 +25,34 @@ const FinalModal: FC<Props> = ({
   }
 
   return (
-    <div style={FinalModalCSS.modalWrapper}>
+    <View style={FinalModalCSS.modalWrapper}>
       {isLoading ? (
         <Text>asdasd</Text>
       ) : (
         // <LoaderModal />
-        <div style={FinalModalCSS.modal}>
+        <View style={FinalModalCSS.modal}>
           <>
-            <p style={FinalModalCSS.resultText}>
-              Дякуємо!
-              <br />
-              Ваше замовлення прийняте,
-              <br />
-              очікуйте дзвінок від менеджера
-            </p>
-            <p>Інформація про замовлення</p>
-            <ul>
+            <Text style={FinalModalCSS.resultText}>Дякуємо!</Text>
+            <Text>Ваше замовлення прийняте,</Text>
+            <Text>очікуйте дзвінок від менеджера</Text>
+            <Text>Інформація про замовлення</Text>
+            <View>
               {filledCart.map(({ _id, title, quantity, totalPrice }) => {
                 return (
-                  <li key={_id}>
-                    <p>
+                  <View key={_id}>
+                    <Text>
                       {title} - {quantity} шт. - {totalPrice} грн.
-                    </p>
-                  </li>
+                    </Text>
+                  </View>
                 );
               })}
-            </ul>
-            <p>Загальна сума: {sum} грн.</p>
+            </View>
+            <View>Загальна сума: {sum} грн.</View>
             <Button onPress={finalAction}>Вийти</Button>
           </>
-        </div>
+        </View>
       )}
-    </div>
+    </View>
   );
 };
 

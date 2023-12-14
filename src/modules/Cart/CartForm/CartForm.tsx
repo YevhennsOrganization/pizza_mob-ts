@@ -5,7 +5,6 @@ import { addInfo, getOrderSum } from "../../../redux/cart/cartSlice";
 import { sendOrder } from "../../../redux/cart/cartOperations";
 import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
-import TextArea from "../../../UI/TextArea/TextArea";
 // import Checkbox from "../../../UI/Checkbox/Checkbox";
 import { StyleSheet, Text, View, Image } from "react-native";
 
@@ -89,12 +88,13 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
             error={errors?.address?.message}
           />
         )}
-        <TextArea
+        <Input
           {...register("comment")}
           id="comment"
           placeholder="Введіть коментар"
           label="Коментар"
           htmlFor="comment"
+          numberOfLines={5}
         />
         <Button onPress={handleSubmit(onSubmit)}>
           <Text>Підтвердити</Text>
