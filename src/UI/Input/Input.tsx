@@ -14,6 +14,7 @@ interface Props extends TextInputProps {
   keyboardType?: KeyboardTypeOptions;
   numberOfLines?: number;
   textArea?: boolean;
+  touched?: any;
 }
 
 const Input: FC<PropsWithRef<Props>> = ({
@@ -34,11 +35,9 @@ const Input: FC<PropsWithRef<Props>> = ({
         {...props}
       />
 
-      {error && (
-        <View>
-          <Text style={inputCSS.errorMessage}>{error}</Text>
-        </View>
-      )}
+      <View style={inputCSS.errorContainer}>
+        {error && <Text style={inputCSS.errorMessage}>{error}</Text>}
+      </View>
     </View>
   );
 };

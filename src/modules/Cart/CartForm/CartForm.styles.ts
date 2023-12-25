@@ -4,7 +4,7 @@ export const cartFormCSS = StyleSheet.create({
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: 20,
+    gap: 5,
     width: "100%",
   },
 });

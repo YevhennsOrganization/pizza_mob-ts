@@ -5,9 +5,10 @@ import { sendOrder } from "../../../redux/cart/cartOperations";
 import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 // import Checkbox from "../../../UI/Checkbox/Checkbox";
-import { Text, View } from "react-native";
+import { GestureResponderEvent, Text, View } from "react-native";
 import { Formik } from "formik";
 import { cartFormCSS } from "./CartForm.styles";
+import { CartFormSchema } from "./CartFormSchema";
 
 interface Props extends HTMLProps<HTMLFormElement> {
   openModal: () => void;
@@ -21,11 +22,11 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
   const submit = (data: TInfo) => {
     openModal();
     const customerInfo: TInfo = {
-      address: data.address,
-      comment: data.comment,
-      delivery: data.delivery,
       name: data.name,
       number: data.number,
+      delivery: data.delivery,
+      address: data.address,
+      comment: data.comment,
     };
     dispatch(addInfo(customerInfo));
     const reqBody: TSummaryOrder = { customerInfo, order, orderSum };
@@ -43,8 +44,16 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
           comment: "",
         }}
         onSubmit={(values) => submit(values)}
+        validationSchema={CartFormSchema}
       >
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+        }) => (
           <>
             <Input
               label="Ім'я"
@@ -52,6 +61,8 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
               value={values.name}
               onChangeText={handleChange("name")}
               onBlur={handleBlur("name")}
+              error={errors.name}
+              touched={touched.name}
             />
 
             <Input
@@ -60,6 +71,8 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
               value={values.number}
               onChangeText={handleChange("number")}
               onBlur={handleBlur("number")}
+              error={errors.number}
+              touched={touched.number}
               keyboardType="phone-pad"
             />
 
@@ -69,6 +82,8 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
               value={values.address}
               onChangeText={handleChange("address")}
               onBlur={handleBlur("address")}
+              error={errors.address}
+              touched={touched.address}
             />
 
             <Input
@@ -81,7 +96,9 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
               textArea
             />
 
-            <Button onPress={handleSubmit}>
+            <Button
+              onPress={handleSubmit as (e?: GestureResponderEvent) => void}
+            >
               <Text>Підтвердити</Text>
             </Button>
           </>

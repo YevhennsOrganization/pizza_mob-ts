@@ -23,6 +23,9 @@ export const inputCSS = StyleSheet.create({
   textArea: {
     textAlignVertical: "top",
   },
+  errorContainer: {
+    height: 20,
+  },
   errorMessage: {
     color: "red",
   },
