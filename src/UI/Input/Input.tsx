@@ -1,5 +1,4 @@
-import React, { FC, forwardRef, HTMLProps, PropsWithRef } from "react";
-import { Controller } from "react-hook-form";
+import React, { FC, PropsWithRef } from "react";
 import {
   Text,
   View,
@@ -17,43 +16,32 @@ interface Props extends TextInputProps {
   textArea?: boolean;
 }
 
-const Input: FC<PropsWithRef<Props>> = forwardRef(
-  (
-    {
-      textArea = false,
-      label,
-      error,
-      keyboardType = "default",
-      numberOfLines = 1,
-      // value,
-      // onChange,
-      ...props
-    },
-    ref
-  ) => {
-    return (
-      <View style={inputCSS.fieldset}>
-        <Text>{label}</Text>
-        <TextInput
-          numberOfLines={numberOfLines}
-          keyboardType={keyboardType}
-          style={[inputCSS.input, textArea && inputCSS.textArea]}
-          // value={value}
-          // onChange={onChange}
-          //   autoComplete="true"
-          //   ref={ref}
-          //   {...props}
-        />
+const Input: FC<PropsWithRef<Props>> = ({
+  textArea = false,
+  label,
+  error,
+  keyboardType = "default",
+  numberOfLines = 1,
+  ...props
+}) => {
+  return (
+    <View style={inputCSS.fieldset}>
+      <Text>{label}</Text>
+      <TextInput
+        numberOfLines={numberOfLines}
+        keyboardType={keyboardType}
+        style={[inputCSS.input, textArea && inputCSS.textArea]}
+        {...props}
+      />
 
-        {error && (
-          <View>
-            <Text style={inputCSS.errorMessage}>{error}</Text>
-          </View>
-        )}
-      </View>
-    );
-  }
-);
+      {error && (
+        <View>
+          <Text style={inputCSS.errorMessage}>{error}</Text>
+        </View>
+      )}
+    </View>
+  );
+};
 
 Input.displayName = "Input";
 

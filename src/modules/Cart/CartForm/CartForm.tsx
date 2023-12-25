@@ -1,5 +1,4 @@
 import React, { FC, HTMLProps } from "react";
-import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { addInfo, getOrderSum } from "../../../redux/cart/cartSlice";
 import { sendOrder } from "../../../redux/cart/cartOperations";
@@ -7,6 +6,7 @@ import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 // import Checkbox from "../../../UI/Checkbox/Checkbox";
 import { Text, View } from "react-native";
+import { Formik } from "formik";
 import { cartFormCSS } from "./CartForm.styles";
 
 interface Props extends HTMLProps<HTMLFormElement> {
@@ -15,23 +15,10 @@ interface Props extends HTMLProps<HTMLFormElement> {
 }
 
 const CartForm: FC<Props> = ({ openModal, order }) => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<TInfo>({
-    defaultValues: {
-      name: "",
-      number: "",
-      comment: "",
-    },
-  });
-
   const orderSum = useAppSelector(getOrderSum);
   const dispatch = useAppDispatch();
 
-  const onSubmit: SubmitHandler<TInfo> = (data) => {
+  const onSubmit1 = (data) => {
     openModal();
     const customerInfo: TInfo = {
       address: data.address,
@@ -45,88 +32,57 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
     dispatch(sendOrder(reqBody));
   };
 
-  const delivery = watch("delivery");
-
   return (
     <View style={cartFormCSS.form}>
-      <Controller
-        control={control}
-        render={({ field: { value, onChange } }) => (
-          <Input
-            // {...register("name", { required: "Це обов'язкове поле!" })}
-            placeholder="Введіть ім'я"
-            error={errors?.name?.message}
-            inputMode="text"
-            value={value}
-            onChangeText={onChange}
-            label="Ім'я"
-          />
-        )}
-        name="name"
-      />
-      <Controller
-        control={control}
-        render={({ field: { value, onChange } }) => (
-          <Input
-            // control={control}
-            // name="number"
-            // {...register("number", {
-            //   required: "Це обов'язкове поле!",
-            //   minLength: 10,
-            //   maxLength: {
-            //     value: 10,
-            //     message: "Забагато цифр",
-            //   },
-            // })}
-            keyboardType="phone-pad"
-            // pattern="[0-9]{10}"
-            label="Номер телефону в форматі: 0991115533"
-            error={errors?.number?.message}
-            value={value}
-            onChange={onChange}
-          />
-        )}
-        name="number"
-      />
-
-      {/* <Checkbox
-        {...register("delivery")}
-        id="delivery"
-        htmlFor="delivery"
-        label="Доставка"
-      /> */}
-      {delivery && (
-        <Controller
-          control={control}
-          render={() => (
+      <Formik
+        initialValues={{ name: "", number: "", address: "", comment: "" }}
+        onSubmit={(values) => onSubmit1(values)}
+      >
+        {({ handleChange, handleBlur, handleSubmit, values }) => (
+          <>
             <Input
-              // {...register("address", { required: "Це обов'язкове поле!" })}
+              placeholder="Введіть ім'я"
+              inputMode="text"
+              value={values.name}
+              onChangeText={handleChange("name")}
+              label="Ім'я"
+              onBlur={handleBlur("name")}
+            />
+
+            <Input
+              keyboardType="phone-pad"
+              // pattern="[0-9]{10}"
+              label="Номер телефону в форматі: 0991115533"
+              placeholder="Введіть номер телефону"
+              value={values.number}
+              onChangeText={handleChange("number")}
+              onBlur={handleBlur("number")}
+            />
+
+            <Input
               label="Введіть адресу"
               placeholder="Введіть адресу"
-              error={errors?.address?.message}
+              value={values.address}
+              onChangeText={handleChange("address")}
+              onBlur={handleBlur("address")}
             />
-          )}
-          name="address"
-        />
-      )}
-      <Controller
-        control={control}
-        render={() => (
-          <Input
-            // {...register("comment")}
-            id="comment"
-            placeholder="Введіть коментар"
-            label="Коментар"
-            numberOfLines={5}
-            textArea
-          />
-        )}
-        name="comment"
-      />
 
-      <Button onPress={handleSubmit(onSubmit)}>
-        <Text>Підтвердити</Text>
-      </Button>
+            <Input
+              placeholder="Введіть коментар"
+              label="Коментар"
+              numberOfLines={5}
+              value={values.comment}
+              onChangeText={handleChange("comment")}
+              onBlur={handleBlur("comment")}
+              textArea
+            />
+
+            <Button onPress={handleSubmit}>
+              <Text>Підтвердити</Text>
+            </Button>
+          </>
+        )}
+      </Formik>
     </View>
   );
 };

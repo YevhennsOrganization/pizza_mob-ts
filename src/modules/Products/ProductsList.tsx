@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView } from "react-native";
+import { View } from "react-native";
 import ProductListItem from "./ProductListItem/ProductListItem";
 import { addItem, getFilledCart } from "../../redux/cart/cartSlice";
 import { getFavorites } from "../../redux/products/productsSlice";
@@ -62,8 +62,8 @@ const ProductsList = ({ data }: ProductsListProps) => {
   };
 
   return (
-    <ScrollView
-      contentContainerStyle={{
+    <View
+      style={{
         rowGap: 20,
         alignItems: "stretch",
         padding: 10,
@@ -81,7 +81,7 @@ const ProductsList = ({ data }: ProductsListProps) => {
           />
         );
       })}
-    </ScrollView>
+    </View>
   );
 };
 
