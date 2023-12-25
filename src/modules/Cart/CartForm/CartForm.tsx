@@ -18,7 +18,7 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
   const orderSum = useAppSelector(getOrderSum);
   const dispatch = useAppDispatch();
 
-  const onSubmit1 = (data) => {
+  const submit = (data: TInfo) => {
     openModal();
     const customerInfo: TInfo = {
       address: data.address,
@@ -35,32 +35,36 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
   return (
     <View style={cartFormCSS.form}>
       <Formik
-        initialValues={{ name: "", number: "", address: "", comment: "" }}
-        onSubmit={(values) => onSubmit1(values)}
+        initialValues={{
+          name: "",
+          number: "",
+          delivery: false,
+          address: "",
+          comment: "",
+        }}
+        onSubmit={(values) => submit(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <>
             <Input
+              label="Ім'я"
               placeholder="Введіть ім'я"
-              inputMode="text"
               value={values.name}
               onChangeText={handleChange("name")}
-              label="Ім'я"
               onBlur={handleBlur("name")}
             />
 
             <Input
-              keyboardType="phone-pad"
-              // pattern="[0-9]{10}"
               label="Номер телефону в форматі: 0991115533"
               placeholder="Введіть номер телефону"
               value={values.number}
               onChangeText={handleChange("number")}
               onBlur={handleBlur("number")}
+              keyboardType="phone-pad"
             />
 
             <Input
-              label="Введіть адресу"
+              label="Адреса"
               placeholder="Введіть адресу"
               value={values.address}
               onChangeText={handleChange("address")}
@@ -68,12 +72,12 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
             />
 
             <Input
-              placeholder="Введіть коментар"
               label="Коментар"
-              numberOfLines={5}
+              placeholder="Введіть коментар"
               value={values.comment}
               onChangeText={handleChange("comment")}
               onBlur={handleBlur("comment")}
+              numberOfLines={5}
               textArea
             />
 
