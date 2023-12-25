@@ -31,29 +31,29 @@ const FinalModal: FC<Props> = ({
       ) : (
         // <LoaderModal />
         <View style={FinalModalCSS.modal}>
-          <>
-            <Text style={FinalModalCSS.resultText}>Дякуємо!</Text>
+          <View style={FinalModalCSS.resultText}>
+            <Text>Дякуємо!</Text>
             <Text>Ваше замовлення прийняте,</Text>
             <Text>очікуйте дзвінок від менеджера</Text>
-            <Text>Інформація про замовлення</Text>
-            <View>
-              {filledCart.map(({ _id, title, quantity, totalPrice }) => {
-                return (
-                  <View key={_id}>
-                    <Text>
-                      {title} - {quantity} шт. - {totalPrice} грн.
-                    </Text>
-                  </View>
-                );
-              })}
-            </View>
-            <View>
-              <Text>Загальна сума: {sum} грн.</Text>
-            </View>
-            <Button onPress={finalAction}>
-              <Text>Вийти</Text>
-            </Button>
-          </>
+            <Text>Інформація про замовлення:</Text>
+          </View>
+          <View>
+            {filledCart.map(({ _id, title, quantity, totalPrice }) => {
+              return (
+                <View key={_id}>
+                  <Text>
+                    {title} - {quantity} шт. - {totalPrice} грн.
+                  </Text>
+                </View>
+              );
+            })}
+          </View>
+          <View>
+            <Text>Загальна сума: {sum} грн.</Text>
+          </View>
+          <Button onPress={finalAction}>
+            <Text>Вийти</Text>
+          </Button>
         </View>
       )}
     </View>
@@ -62,45 +62,26 @@ const FinalModal: FC<Props> = ({
 
 const FinalModalCSS = StyleSheet.create({
   modalWrapper: {
-    // position: "fixed",
-    //   boxSizing: 'border-box',
-    //   zIndex: 9,
-    //   left: 0,
-    //   top: 0,
-    //   width: 100vw,
-    //   height: 100vh,
     //   background: rgba($color: #3d3838, $alpha: 0.7),
     display: "flex",
     justifyContent: "center",
-    alignItems: "flex-start",
-    paddingHorizontal: 50,
-    paddingVertical: 0,
+    alignItems: "center",
+    paddingVertical: 50,
     overflow: "scroll",
   },
   modal: {
     // backgroundColor: var(--white-color),
     // color: var(--black-color),
-    padding: 20,
-    borderRadius: 20,
     // font-family: var(--secondary-font),
     display: "flex",
     flexDirection: "column",
     gap: 10,
   },
   resultText: {
-    textAlign: "center",
-  },
-  quantitySet: {
-    display: "flex",
-    justifyContent: "center",
     alignItems: "center",
-  },
-  closeBtn: {
-    position: "absolute",
-    top: 20,
-    right: 20,
-    width: 20,
-    height: 20,
+    display: "flex",
+    flexDirection: "column",
+    gap: 10,
   },
 });
 

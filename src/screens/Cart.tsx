@@ -38,13 +38,14 @@ const Cart = () => {
   return (
     <PagesWrapper>
       <View>
-        <CartContent
-          filledCart={filledCart}
-          deleteCartItem={deleteCartItem}
-          deleteAllProducts={deleteAllProducts}
-          openModal={openModal}
-        />
-        {open && (
+        {!open ? (
+          <CartContent
+            filledCart={filledCart}
+            deleteCartItem={deleteCartItem}
+            deleteAllProducts={deleteAllProducts}
+            openModal={openModal}
+          />
+        ) : (
           <FinalModal
             finalAction={deleteAllProducts}
             filledCart={filledCart}

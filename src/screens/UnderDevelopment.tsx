@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 const UnderDevelopment = () => {
   return (
     <View style={styles.wrapper}>
-      <Text>UnderDevelopment</Text>
+      <Text>Сторінка в розробці</Text>
     </View>
   );
 };
