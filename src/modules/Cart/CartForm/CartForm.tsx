@@ -6,7 +6,8 @@ import { sendOrder } from "../../../redux/cart/cartOperations";
 import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 // import Checkbox from "../../../UI/Checkbox/Checkbox";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { cartFormCSS } from "./CartForm.styles";
 
 interface Props extends HTMLProps<HTMLFormElement> {
   openModal: () => void;
@@ -16,12 +17,16 @@ interface Props extends HTMLProps<HTMLFormElement> {
 const CartForm: FC<Props> = ({ openModal, order }) => {
   const {
     control,
-    reset,
-    register,
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<TInfo>({ mode: "onChange" });
+  } = useForm<TInfo>({
+    defaultValues: {
+      name: "",
+      number: "",
+      comment: "",
+    },
+  });
 
   const orderSum = useAppSelector(getOrderSum);
   const dispatch = useAppDispatch();
@@ -78,7 +83,7 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
             label="Номер телефону в форматі: 0991115533"
             error={errors?.number?.message}
             value={value}
-            onChangeText={onChange}
+            onChange={onChange}
           />
         )}
         name="number"
@@ -95,7 +100,7 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
           control={control}
           render={() => (
             <Input
-              {...register("address", { required: "Це обов'язкове поле!" })}
+              // {...register("address", { required: "Це обов'язкове поле!" })}
               label="Введіть адресу"
               placeholder="Введіть адресу"
               error={errors?.address?.message}
@@ -108,11 +113,12 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
         control={control}
         render={() => (
           <Input
-            {...register("comment")}
+            // {...register("comment")}
             id="comment"
             placeholder="Введіть коментар"
             label="Коментар"
             numberOfLines={5}
+            textArea
           />
         )}
         name="comment"
@@ -125,12 +131,4 @@ const CartForm: FC<Props> = ({ openModal, order }) => {
   );
 };
 
-const cartFormCSS = StyleSheet.create({
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 20,
-    width: "100%",
-  },
-});
 export default CartForm;

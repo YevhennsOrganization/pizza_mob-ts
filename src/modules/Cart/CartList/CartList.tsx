@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import CartListItem from "./components/CartListItem/CartListItem";
+import { Text, View } from "react-native";
+import CartListItem from "./CartListItem/CartListItem";
 import Button from "../../../UI/Button/Button";
 import { useAppDispatch } from "../../../redux/hooks";
 import { addOrderSum } from "../../../redux/cart/cartSlice";
+import { CartListCSS } from "./CartList.styles";
 
 interface Props {
   filledCart: TCart;
@@ -39,16 +40,5 @@ const CartList = ({ filledCart, deleteCartItem, deleteAllProducts }: Props) => {
     </View>
   );
 };
-
-const CartListCSS = StyleSheet.create({
-  cartList: {
-    marginBottom: 20,
-  },
-  totalPayment: {
-    // font-family: var(--secondary-font);
-    marginBottom: 20,
-    textAlign: "center",
-  },
-});
 
 export default CartList;

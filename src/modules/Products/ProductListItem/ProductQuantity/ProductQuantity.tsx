@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import RoundButton from "../../../../../UI/RoundButton/RoundButton";
+import { View, Text } from "react-native";
+import RoundButton from "../../../../UI/RoundButton/RoundButton";
 import { Entypo } from "@expo/vector-icons";
+import { productQuantityCSS } from "./ProductQuantity.styles";
 
 type ProductQuantityProps = {
   getTotalQuantity: (quantity: number) => void;
@@ -37,18 +38,5 @@ const ProductQuantity = ({ getTotalQuantity }: ProductQuantityProps) => {
     </View>
   );
 };
-
-const productQuantityCSS = StyleSheet.create({
-  wrapper: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    // marginTop: "auto",
-    gap: 5,
-  },
-  quantityText: {
-    //       font-family: var(--secondary-font);
-  },
-});
 
 export default ProductQuantity;

@@ -1,33 +1,32 @@
 import React, { FC, forwardRef, HTMLProps, PropsWithRef } from "react";
 import { Controller } from "react-hook-form";
 import {
-  StyleSheet,
   Text,
   View,
-  Image,
   TextInput,
   KeyboardTypeOptions,
   TextInputProps,
 } from "react-native";
+import { inputCSS } from "./Input.styles";
 
 interface Props extends TextInputProps {
   label?: string;
   error?: string;
   keyboardType?: KeyboardTypeOptions;
   numberOfLines?: number;
-  // name: string;
-  // control: any;
+  textArea?: boolean;
 }
 
 const Input: FC<PropsWithRef<Props>> = forwardRef(
   (
     {
+      textArea = false,
       label,
       error,
       keyboardType = "default",
       numberOfLines = 1,
-      // name,
-      // control,
+      // value,
+      // onChange,
       ...props
     },
     ref
@@ -38,7 +37,9 @@ const Input: FC<PropsWithRef<Props>> = forwardRef(
         <TextInput
           numberOfLines={numberOfLines}
           keyboardType={keyboardType}
-          style={inputCSS.input}
+          style={[inputCSS.input, textArea && inputCSS.textArea]}
+          // value={value}
+          // onChange={onChange}
           //   autoComplete="true"
           //   ref={ref}
           //   {...props}
@@ -55,31 +56,5 @@ const Input: FC<PropsWithRef<Props>> = forwardRef(
 );
 
 Input.displayName = "Input";
-
-const inputCSS = StyleSheet.create({
-  fieldset: {
-    // font-family: var(--secondary-font);
-    display: "flex",
-    flexDirection: "column",
-    gap: 5,
-  },
-  input: {
-    width: "100%",
-    padding: 12,
-    borderRadius: 5,
-    borderColor: "#de612b",
-    borderWidth: 1,
-    textAlignVertical: "top",
-    // transition: var(--transition);
-    // outline: none;
-    // font-family: var(--main-font);
-    // &:hover {
-    //     box-shadow: var(--box-shadow);
-    // }
-  },
-  errorMessage: {
-    color: "red",
-  },
-});
 
 export default Input;

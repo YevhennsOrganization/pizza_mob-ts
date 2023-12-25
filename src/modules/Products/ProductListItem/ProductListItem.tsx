@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import ProductQuantity from "./components/ProductQuantity/ProductQuantity";
+import { View, Text } from "react-native";
+import ProductQuantity from "./ProductQuantity/ProductQuantity";
 import {
   addToFavoriteAction,
   removeFromFavoriteAction,
 } from "../../../redux/products/productsSlice";
-import ProductFooter from "./components/ProductFooter/ProductFooter";
-import ProductDescription from "./components/ProductDescription/ProductDescription";
+import ProductFooter from "./ProductFooter/ProductFooter";
+import ProductDescription from "./ProductDescription/ProductDescription";
 import RoundButton from "../../../UI/RoundButton/RoundButton";
 import { AntDesign } from "@expo/vector-icons";
 import { useAppDispatch } from "../../../redux/hooks";
 import Toast from "react-native-toast-message";
+import { ProductListItemCSS } from "./ProductListItem.styles";
 
 type ProductListItemProps = {
   item: TProduct;
@@ -70,13 +71,13 @@ const ProductListItem = ({
   };
 
   return (
-    <View style={css1.listItem}>
+    <View style={ProductListItemCSS.listItem}>
       {promotion && (
-        <View style={css1.promotion}>
+        <View style={ProductListItemCSS.promotion}>
           <Text style={{ color: "#fff" }}>Акція</Text>
         </View>
       )}
-      <View style={css1.favorite}>
+      <View style={ProductListItemCSS.favorite}>
         <RoundButton aria-label="add to favorite" onPress={addToFavorite}>
           {isFavorite ? (
             <AntDesign name="heart" size={40} color="#de612b" />
@@ -104,35 +105,5 @@ const ProductListItem = ({
     </View>
   );
 };
-
-const css1 = StyleSheet.create({
-  listItem: {
-    backgroundColor: "#fff",
-    color: "black",
-    padding: 24,
-    borderRadius: 10,
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
-  },
-  promotion: {
-    position: "absolute",
-    top: 24,
-    left: 24,
-    backgroundColor: "#de612b",
-    // background-color: var(--accent-color);
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    borderRadius: 12,
-    // color: var(--white-color);
-    // font-family: var(--main-font);
-  },
-  favorite: {
-    position: "absolute",
-    right: 24,
-    top: 24,
-  },
-});
 
 export default ProductListItem;

@@ -1,7 +1,8 @@
 import React, { FC } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import RoundButton from "../../../../../UI/RoundButton/RoundButton";
+import { Text, View, Image } from "react-native";
+import RoundButton from "../../../../UI/RoundButton/RoundButton";
 import { FontAwesome } from "@expo/vector-icons";
+import { CartListItemCSS } from "./CartListItem.styles";
 
 interface Props {
   data: TCartItem;
@@ -31,16 +32,5 @@ const CartListItem: FC<Props> = ({ data, deleteCartItem }) => {
     </View>
   );
 };
-
-const CartListItemCSS = StyleSheet.create({
-  cartListItem: {
-    flexDirection: "row",
-    gap: 5,
-    marginLeft: "auto",
-    marginRight: "auto",
-    alignItems: "center",
-    // font-family: var(--secondary-font);
-  },
-});
 
 export default CartListItem;
