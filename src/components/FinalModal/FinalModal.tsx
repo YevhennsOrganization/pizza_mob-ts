@@ -4,6 +4,7 @@ import Button from "../../UI/Button/Button";
 // import LoaderModal from "../../UI/common/LoaderModal/LoaderModal";
 import Error500 from "../errors/Error500/Error500";
 import { StyleSheet, Text, View, Image } from "react-native";
+import Loader from "../../UI/Loader/Loader";
 
 interface Props {
   finalAction: () => void;
@@ -27,7 +28,7 @@ const FinalModal: FC<Props> = ({
   return (
     <View style={FinalModalCSS.modalWrapper}>
       {isLoading ? (
-        <Text>asdasd</Text>
+        <Loader />
       ) : (
         // <LoaderModal />
         <View style={FinalModalCSS.modal}>

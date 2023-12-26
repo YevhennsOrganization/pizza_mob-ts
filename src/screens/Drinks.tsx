@@ -4,6 +4,7 @@ import ProductsList from "../modules/Products/ProductsList";
 import { filterByCategory } from "../helpers/filterByCategory";
 import { useAppSelector } from "../redux/hooks";
 import { getIsLoading, getProductsAll } from "../redux/products/productsSlice";
+import Loader from "../UI/Loader/Loader";
 
 const Drinks = () => {
   const products = useAppSelector(getProductsAll);
@@ -12,7 +13,7 @@ const Drinks = () => {
 
   return (
     <PagesWrapper>
-      {/* {isLoading && <LoaderModal />} */}
+      {isLoading && <Loader />}
       <ProductsList data={drinks} />
     </PagesWrapper>
   );
