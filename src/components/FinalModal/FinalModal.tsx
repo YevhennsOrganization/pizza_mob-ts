@@ -3,8 +3,9 @@ import React, { FC } from "react";
 import Button from "../../UI/Button/Button";
 // import LoaderModal from "../../UI/common/LoaderModal/LoaderModal";
 import Error500 from "../errors/Error500/Error500";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { Text, View } from "react-native";
 import Loader from "../../UI/Loader/Loader";
+import { FinalModalCSS } from "./FinalModal.styles";
 
 interface Props {
   finalAction: () => void;
@@ -30,7 +31,6 @@ const FinalModal: FC<Props> = ({
       {isLoading ? (
         <Loader />
       ) : (
-        // <LoaderModal />
         <View style={FinalModalCSS.modal}>
           <View style={FinalModalCSS.resultText}>
             <Text>Дякуємо!</Text>
@@ -53,37 +53,12 @@ const FinalModal: FC<Props> = ({
             <Text>Загальна сума: {sum} грн.</Text>
           </View>
           <Button onPress={finalAction}>
-            <Text>Вийти</Text>
+            <Text style={FinalModalCSS.buttonText}>Вийти</Text>
           </Button>
         </View>
       )}
     </View>
   );
 };
-
-const FinalModalCSS = StyleSheet.create({
-  modalWrapper: {
-    //   background: rgba($color: #3d3838, $alpha: 0.7),
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 50,
-    overflow: "scroll",
-  },
-  modal: {
-    // backgroundColor: var(--white-color),
-    // color: var(--black-color),
-    // font-family: var(--secondary-font),
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
-  },
-  resultText: {
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    gap: 10,
-  },
-});
 
 export default FinalModal;

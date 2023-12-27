@@ -35,7 +35,7 @@ const CartList = ({ filledCart, deleteCartItem, deleteAllProducts }: Props) => {
       })}
       <Text style={CartListCSS.totalPayment}>До оплати {sum} грн</Text>
       <Button onPress={deleteAllProducts}>
-        <Text>Очистити кошик</Text>
+        <Text style={CartListCSS.buttonText}>Очистити кошик</Text>
       </Button>
     </View>
   );

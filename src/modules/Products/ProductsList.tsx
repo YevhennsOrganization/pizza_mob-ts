@@ -5,6 +5,7 @@ import { addItem, getFilledCart } from "../../redux/cart/cartSlice";
 import { getFavorites } from "../../redux/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import Toast from "react-native-toast-message";
+import { ProductsListCSS } from "./ProductsList.styles";
 
 type ProductsListProps = {
   data: TProductsArr;
@@ -62,13 +63,7 @@ const ProductsList = ({ data }: ProductsListProps) => {
   };
 
   return (
-    <View
-      style={{
-        rowGap: 20,
-        alignItems: "stretch",
-        padding: 10,
-      }}
-    >
+    <View style={ProductsListCSS.wrapper}>
       {data.map((item) => {
         return (
           <ProductListItem

@@ -24,9 +24,9 @@ const ProductDescription = ({
         height={200}
       />
       <View style={ProductDescriptionCSS.info}>
-        <Text>{title}</Text>
-        <Text>{description}</Text>
-        <Text>{dimension}</Text>
+        <Text style={ProductDescriptionCSS.title}>{title}</Text>
+        <Text style={ProductDescriptionCSS.text}>{description}</Text>
+        <Text style={ProductDescriptionCSS.text}>{dimension}</Text>
       </View>
     </View>
   );

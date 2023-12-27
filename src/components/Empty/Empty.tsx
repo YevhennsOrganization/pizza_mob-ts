@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { View, Text, Image } from "react-native";
+import { emptyCSS } from "./Empty.styles";
 
 interface Props {
   text: string;
@@ -18,12 +19,5 @@ const Empty: FC<Props> = ({ text }) => {
     </View>
   );
 };
-
-const emptyCSS = StyleSheet.create({
-  emptyCart: {
-    alignItems: "center",
-    gap: 10,
-  },
-});
 
 export default Empty;

@@ -47,13 +47,13 @@ const ProductFooter = ({
             <MaterialCommunityIcons
               name="basket-outline"
               size={24}
-              color="black"
+              color="white"
             />
-            <Text>В кошику</Text>
+            <Text style={ProductFooterCSS.buttonText}>В кошику</Text>
           </View>
         ) : (
           <View>
-            <Text>В кошик</Text>
+            <Text style={ProductFooterCSS.buttonText}>В кошик</Text>
           </View>
         )}
       </Button>

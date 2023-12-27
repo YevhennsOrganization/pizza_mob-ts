@@ -30,4 +30,8 @@ export const ProductFooterCSS = StyleSheet.create({
     fontWeight: "700",
     textDecorationLine: "line-through",
   },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
+  },
 });

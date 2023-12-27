@@ -5,10 +5,9 @@ export const productQuantityCSS = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    // marginTop: "auto",
     gap: 5,
   },
   quantityText: {
-    //       font-family: var(--secondary-font);
+    fontSize: 16,
   },
 });

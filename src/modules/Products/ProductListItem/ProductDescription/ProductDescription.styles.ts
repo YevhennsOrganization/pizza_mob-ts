@@ -10,14 +10,12 @@ export const ProductDescriptionCSS = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 12,
-    // h2 {
-    //     font-family: var(--main-font);
-    //     font-size: 18px;
-    // }
-    // p {
-    //     font-family: var(--secondary-font);
-    //     color: var(--secondary-text-color);
-    // }
+  },
+  title: {
+    fontSize: 24,
+  },
+  text: {
+    fontSize: 16,
   },
   img: {
     marginLeft: "auto",
