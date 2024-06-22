@@ -15,14 +15,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.yevhenns.pizza"
+      "package": "com.yevhenns.pizza",
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,6 +36,9 @@
         "projectId": "dee85333-ed75-40ac-b1e8-cf491449b58d"
       }
     },
-    "owner": "yevhenns"
+    "owner": "yevhenns",
+    "updates": {
+      "url": "https://u.expo.dev/dee85333-ed75-40ac-b1e8-cf491449b58d"
+    }
   }
 }
